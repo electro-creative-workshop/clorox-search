@@ -399,7 +399,7 @@ export function initCloroxSearch(settings) {
         if (sectionName === currentSection) {
           perPage = section.indices[index].hitsPerPage;
           if (isMobile) {
-            perPage = section.indices[index].hitsPerPageMobile ?? perPage;
+            perPage = section.indices[index].hitsPerPageMobile || perPage;
           }
         }
         queries.push({
@@ -407,7 +407,7 @@ export function initCloroxSearch(settings) {
           query: queryString,
           params: {
             hitsPerPage: perPage,
-            attributesToRetrieve: section.indices[index].fields ?? indexDefault.fields,
+            attributesToRetrieve: section.indices[index].fields || indexDefault.fields,
             // English product index does not support language filtering
             filters: (sectionName === 'products' && SEARCH_CONFIG.language === 'en') ? '' : `language:${SEARCH_CONFIG.language}`,
           },
@@ -434,13 +434,13 @@ export function initCloroxSearch(settings) {
     if (sectionName === currentSection) {
       perPage = section.indices[indexName].hitsPerPage;
       if (isMobile) {
-        perPage = section.indices[indexName].hitsPerPageMobile ?? perPage;
+        perPage = section.indices[indexName].hitsPerPageMobile || perPage;
       }
     }
 
     let opts = {
       hitsPerPage: perPage,
-      attributesToRetrieve: section.indices[indexName].fields ?? indexDefault.fields,
+      attributesToRetrieve: section.indices[indexName].fields || indexDefault.fields,
       filters: !sections['products'].indices[indexName] ? `language:${SEARCH_CONFIG.language}` : '',
       page: page,
     };
