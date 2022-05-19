@@ -1,0 +1,17 @@
+// //==============================================================================
+// // Various helper functions
+// //==============================================================================
+
+// Returns both a font-size in pixels and REMs for IE compatibility.
+// Also, returns a default line-height of 1 unless a second parameter is defined.
+
+@mixin font-size($fontsize:16,$lineheight:normal) {
+    font-size: $fontsize+0px;
+    font-size: calc($fontsize/16) + 0rem;
+
+    @if $lineheight == normal {
+        line-height: normal;
+    } @else {
+        line-height: calc($lineheight/$fontsize);
+    }
+}

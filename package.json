@@ -1,0 +1,32 @@
+{
+  "name": "clorox-search",
+  "version": "1.0.0",
+  "description": "Integrates algolia search into clorox.com site",
+  "main": "dist/clorox-search.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electro-creative-workshop/clorox-search.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/electro-creative-workshop/clorox-search/issues"
+  },
+  "homepage": "https://github.com/electro-creative-workshop/clorox-search#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.12",
+    "babel-loader": "^8.2.5",
+    "sass": "^1.51.0",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2"
+  },
+  "scripts": {
+    "build": "npm run build:scss && npm run build:webpack",
+    "build:webpack": "webpack --progress --mode production",
+    "build:scss": "sass --no-source-map --style=compressed src/scss/search.scss dist/clorox-search.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "algoliasearch": "^4.13.1"
+  }
+}

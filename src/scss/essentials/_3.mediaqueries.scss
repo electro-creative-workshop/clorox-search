@@ -1,0 +1,34 @@
+//==============================================================================
+// Media Queries
+//==============================================================================
+
+// Sizes
+$mq-tablet-min:     calc(768/16) + 0em;  // 768px
+$mq-tablet-max:     calc(1024/16) + 0em;  // 1024px
+
+$mq-desktop-min:    calc(1025/16) + 0em; // 1025px
+$mq-desktop-max:    calc(1599/16) + 0em; // 1599px
+
+$mq-desktop-xl-min: calc(1600/16) + 0em; // 1600px
+
+
+// MEDIA QUERIES
+$media-queries: true !default;
+$media-query-free-breakpoint: 900px;
+
+@mixin respond-to($min-width, $max-width: false) {
+    @if $media-queries {
+            @media screen and (min-width: $min-width) {
+                @if $max-width {
+                    @media (max-width: $max-width) {
+                        @content;
+                    }
+                } @else {
+                    @content;
+                }
+            }
+    }
+    @else if $min-width <= $media-query-free-breakpoint and (not $max-width or $max-width and $max-width >= $media-query-free-breakpoint) {
+        @content;
+    }
+}

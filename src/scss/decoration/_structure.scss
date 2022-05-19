@@ -1,0 +1,16 @@
+//==============================================================================
+// Define all elements related to the integral structure of the site
+//==============================================================================
+
+
+
+.container-inner-redesign {
+    width: 100%;
+    max-width: pxem(1600);
+    margin: 0 auto;
+    padding: 0 24px;
+
+    @include respond-to($mq-tablet-min)     { padding: 0 40px; }
+    @include respond-to($mq-desktop-min)    { padding: 0 48px; }
+    @include respond-to($mq-desktop-xl-min) { padding: 0 56px; }
+}

@@ -1,0 +1,40 @@
+// wp font path
+$font-path: "/wp-content/themes/electro/fonts/";
+
+//==============================================================================
+// Typefaces
+//==============================================================================
+
+$font-larsseit-reg: 'Larsseit Alt Regular', Arial, sans-serif;
+
+$font-larsseit-med: 'Larsseit Alt Medium', Arial, sans-serif;
+
+$font-larsseit-light: 'Larsseit Alt Light', Arial, sans-serif;
+
+$font-larsseit-bold: 'Larsseit Alt Bold', Arial, sans-serif;
+
+$font-larsseit-bold-italic: 'Larsseit Alt Bold Italic', Arial, sans-serif;
+
+@mixin Larsseit-Regular {
+  font-family: $font-larsseit-reg;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin Larsseit-Medium {
+  font-family: $font-larsseit-med;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin Larsseit-Light {
+  font-family: $font-larsseit-light;
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin Larsseit-Bold {
+  font-family: $font-larsseit-bold;
+  font-weight: normal;
+  font-style: normal;
+}

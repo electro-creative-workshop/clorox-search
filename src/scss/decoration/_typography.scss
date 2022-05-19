@@ -1,0 +1,75 @@
+//==============================================================================
+// Tales of Typographic Styles
+//==============================================================================
+
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    font-family: $font-larsseit-bold;
+    // font-weight: normal;
+    font-size: 30px;
+    line-height: 150%;
+    letter-spacing: -0.03em;
+
+    @include respond-to($mq-tablet-min) {
+        font-size: 36px;
+        line-height: 125%;
+        letter-spacing: -0.015em;
+    }
+}
+
+p {
+    @include paragraph();
+}
+
+.button {
+    font-family: $font-larsseit-bold;
+    font-size: 16px;
+    line-height: 150%;
+    // font-weight: 400;
+    letter-spacing: 0;
+
+    @include respond-to($mq-tablet-min) {
+        font-size: 16px;
+        line-height: 150%;
+        // font-weight: 400;
+        letter-spacing: 0;
+    }
+}
+
+
+.label-large-strong {
+    font-family: $font-larsseit-bold;
+    font-size: 18px;
+    line-height: 150%;
+    // font-weight: 400;
+    letter-spacing: 0;
+
+    @include respond-to($mq-tablet-min) {
+        font-family: $font-larsseit-bold;
+        font-size: 18px;
+        line-height: 120%;
+        // font-weight: 500;
+        letter-spacing: 0;
+    }
+}
+
+
+.label-small {
+    font-size: 14px;
+    line-height: 130%;
+    // font-weight: 500;
+    letter-spacing: 0;
+
+    @include respond-to($mq-tablet-min) {
+        // font-family: $font-larsseit-med;
+        font-size: 14px;
+        line-height: 150%;
+        // font-weight: 500;
+        letter-spacing: 0;
+    }
+}
