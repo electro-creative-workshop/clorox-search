@@ -2,16 +2,23 @@
 
 The goal with this code is to simplify the integration into the WordPress and Magento servers and have similar search capability on each.
 
-1. Load required JS & CSS from this package
+
+1. Add this package as a project dependency in package.json
+
+    `"clorox-search": "github:electro-creative-workshop/clorox-search#semver:^1.0.0",`
+
+
+2. Load required JS & CSS from this package
 
     - import {initCloroxSearch} from 'clorox-search';
+
 
     - @import "../../node_modules/clorox-search/dist/clorox-search";
 
 
 
 
-2. call initCloroxSearch() to initialize. Defaults should work during development, but here are the parameters which can be overridden when calling:
+3. call initCloroxSearch() to initialize. Defaults should work during development, but here are the parameters which can be overridden when calling:
   
         initCloroxSearch({
           homeURL: 'https://search.clorox.com',
@@ -22,7 +29,7 @@ The goal with this code is to simplify the integration into the WordPress and Ma
           productsUrl: 'https://search.clorox.com/products/',
         })
 
-3. call showCloroxSearch() - to invoke
+4. call showCloroxSearch() - to invoke
 
 
 
