@@ -10,12 +10,12 @@ import algoliasearch from 'algoliasearch/lite';
 
 export function initCloroxSearch(settings) {
   const SEARCH_CONFIG = Object.assign({
-    homeURL: 'https://search.clorox.com',
+    homeURL: 'https://dtc.clorox.com',
     language: 'en',
     AppID: 'GRSV9LRTAJ',
     searchKey: '54ea8a2e1cfd0dd6e84ab89892df4da6',
-    faqUrl: 'https://search.clorox.com/clorox-faq/',
-    productsUrl: 'https://search.clorox.com/products/',
+    faqUrl: 'https://dtc.clorox.com/clorox-faq/',
+    productsUrl: 'https://dtc.clorox.com/products/',
     initSearch: 'bleach',
   }, settings);
   console.log(SEARCH_CONFIG);
@@ -25,7 +25,7 @@ export function initCloroxSearch(settings) {
     search: 'Search',
     products: 'Products',
     information: 'Information',
-    noResults: 'No Results',
+    noResults: 'No results',
     noResultsDetail: 'We tried as hard as we could but couldn\'t find any results',
     viewAllProducts: 'View all products',
     guides: 'Cleaning Guides',
@@ -41,7 +41,7 @@ export function initCloroxSearch(settings) {
       search: 'Buscar',
       products: 'Productos',
       information: 'Información',
-      noResults:'No Results (es)',
+      noResults:'No results (es)',
       noResultsDetail: 'We tried as hard as we could but couldn\'t find any results (es)',
       viewAllProducts: 'View all products (es)',
       guides: 'Cleaning Guides (es)',
@@ -154,8 +154,8 @@ export function initCloroxSearch(settings) {
 
         if (item.thumbnail_url) {
           html += '<div class="search-result-img">';
-          html += `<img src="${item.thumbnail_url}?width=75&amp;height=75&amp;fit=crop" alt="">`;
-          html += '</div>';
+            html += `<img src="${item.thumbnail_url}?width=176&amp;height=176&amp;fit=crop" alt="">`;
+            html += '</div>';
         }
 
         html += `<div class="search-result-txt">`;
@@ -239,8 +239,8 @@ export function initCloroxSearch(settings) {
 
     html += '<div class="search-controls">';
     html +=   '<div class="search-fields">';
-    html +=     `<input type="search" name="s" autoComplete="off" placeholder="${strings.search}" class="js-search-input">`;
-    html +=     `<button class="search-close" type="btton" aria-label="Close"><img src="${SEARCH_CONFIG.homeURL}/wp-content/themes/electro/img/search/close.png" alt=""/></button>`;
+    html +=     `<input type="search" name="s" autoComplete="off" placeholder="${strings.search}" class="js-search-input" style="background-image:url('${SEARCH_CONFIG.homeURL}/wp-content/themes/electro/img/search/search.svg');">`;
+    html +=     `<button class="search-close" type="button" aria-label="Close"><img src="${SEARCH_CONFIG.homeURL}/wp-content/themes/electro/img/search/close.svg" alt=""/></button>`;
     html +=   '</div>';
 
     html +=   '<ul class="search-tabs js-search-tabs" role="tablist">';
