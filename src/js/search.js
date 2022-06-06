@@ -382,10 +382,16 @@ export function initCloroxSearch(settings) {
 
   // run new query against all indices
   function query(value, source) {
+    // use initSearch value when value isn't good
+    value = value && value.length > 2 ? value : SEARCH_CONFIG.initSearch;
+
     searchSource = source;
     focused = null;
 
-    value = value.trim();
+    value = value
+      .trim() // remove spaces
+      .substring(0, 512); // algolia max query string length
+
 
     controller = new AbortController();
     signal = controller.signal;
