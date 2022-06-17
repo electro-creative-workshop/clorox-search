@@ -21,12 +21,12 @@ The goal with this code is to simplify the integration into the WordPress and Ma
 3. call initCloroxSearch() to initialize. Defaults should work during development, but here are the parameters which can be overridden when calling:
   
         initCloroxSearch({
-          homeURL: 'https://search.clorox.com',
+          homeURL: 'https://dtc.clorox.com',
           language: 'en',
           AppID: 'GRSV9LRTAJ',
           searchKey: '54ea8a2e1cfd0dd6e84ab89892df4da6',
-          faqUrl: 'https://search.clorox.com/clorox-faq/',
-          productsUrl: 'https://search.clorox.com/products/',
+          faqUrl: 'https://dtc.clorox.com/clorox-faq/',
+          productsUrl: 'https://dtc.clorox.com/products/',
         })
 
 4. call showCloroxSearch() - to invoke

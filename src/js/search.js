@@ -17,6 +17,7 @@ export function initCloroxSearch(settings) {
     faqUrl: 'https://dtc.clorox.com/clorox-faq/',
     productsUrl: 'https://dtc.clorox.com/products/',
     initSearch: 'bleach',
+    shopProductIndex: 'clorox_clea_staging_cleaning_en_products', // need to override for production
   }, settings);
   console.log(SEARCH_CONFIG);
 
@@ -84,7 +85,7 @@ export function initCloroxSearch(settings) {
   };
 
 
-  let productIndex = 'clorox_clea_integration_cleaning_en_products';
+  let productIndex = SEARCH_CONFIG.shopProductIndex;
   if (SEARCH_CONFIG.language === 'es') {
     productIndex = 'wp_posts_product';
   }
