@@ -265,6 +265,8 @@
 
     .search-results-guides {
         text-align: center;
+        border-bottom: 1px solid $color-slate-400;
+        margin-bottom: 45px;
         ul {
             text-align: left;
             display: grid;

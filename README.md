@@ -1,4 +1,4 @@
-# Clorox Aloglia Search Integration
+# Clorox Algolia Search Integration
 
 The goal with this code is to simplify the integration into the WordPress and Magento servers and have similar search capability on each.
 
@@ -27,6 +27,8 @@ The goal with this code is to simplify the integration into the WordPress and Ma
           searchKey: '54ea8a2e1cfd0dd6e84ab89892df4da6',
           faqUrl: 'https://dtc.clorox.com/clorox-faq/',
           productsUrl: 'https://dtc.clorox.com/products/',
+          initSearch: 'bleach',
+          shopProductIndex: 'clorox_clea_staging_cleaning_en_products',
         })
 
 4. call showCloroxSearch() - to invoke
