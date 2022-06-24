@@ -342,7 +342,7 @@
         .chevron {
             max-width: 18px;
             margin-left: 18px;
-            transform: rotate(180deg);
+            transform: rotate(0deg);
             transition: all 0ms;
 
         }
@@ -358,7 +358,7 @@
             margin-top: 32px;
         }
         .active {
-            .chevron { transform: rotate(0deg); }
+            .chevron { transform: rotate(180deg); }
             .answer { max-height: 500px; }
         }
         span.question {
