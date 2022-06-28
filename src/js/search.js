@@ -9,15 +9,16 @@
 import algoliasearch from 'algoliasearch/lite';
 
 export function initCloroxSearch(settings) {
+  // defaults to production values
   const SEARCH_CONFIG = Object.assign({
-    homeURL: 'https://dtc.clorox.com',
+    homeURL: 'https://www.clorox.com',
     language: 'en',
-    AppID: 'GRSV9LRTAJ',
-    searchKey: '54ea8a2e1cfd0dd6e84ab89892df4da6',
-    faqUrl: 'https://dtc.clorox.com/clorox-faq/',
-    productsUrl: 'https://dtc.clorox.com/products/',
+    AppID: 'GTL8ORQAY1',
+    searchKey: '4fb8822c5e87903f56a689b93e4a0cfa',
+    faqUrl: 'https://www.clorox.com/clorox-faq/',
+    productsUrl: 'https://shop.clorox.com/products/',
     initSearch: 'bleach',
-    shopProductIndex: 'clorox_clea_staging_cleaning_en_products', // need to override for production
+    shopProductIndex: 'clorox_clea_prod_cleaning_en_products',
   }, settings);
   console.log(SEARCH_CONFIG);
 

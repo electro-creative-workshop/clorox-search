@@ -18,17 +18,17 @@ The goal with this code is to simplify the integration into the WordPress and Ma
 
 
 
-3. call initCloroxSearch() to initialize. Defaults should work during development, but here are the parameters which can be overridden when calling:
+3. call initCloroxSearch() to initialize. Defaults are for production and should be overridden for development. Here are the parameters which can be overridden when calling:
   
         initCloroxSearch({
-          homeURL: 'https://dtc.clorox.com',
+          homeURL: 'https://www.clorox.com',
           language: 'en',
-          AppID: 'GRSV9LRTAJ',
-          searchKey: '54ea8a2e1cfd0dd6e84ab89892df4da6',
-          faqUrl: 'https://dtc.clorox.com/clorox-faq/',
-          productsUrl: 'https://dtc.clorox.com/products/',
+          AppID: 'GTL8ORQAY1',
+          searchKey: '4fb8822c5e87903f56a689b93e4a0cfa',
+          faqUrl: 'https://www.clorox.com/clorox-faq/',
+          productsUrl: 'https://shop.clorox.com/products/',
           initSearch: 'bleach',
-          shopProductIndex: 'clorox_clea_staging_cleaning_en_products',
+          shopProductIndex: 'clorox_clea_prod_cleaning_en_products',
         })
 
 4. call showCloroxSearch() - to invoke
