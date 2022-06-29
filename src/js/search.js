@@ -155,8 +155,9 @@ export function initCloroxSearch(settings) {
         html += `<li><a href="${item.url}/" class="search__item">`;
 
         if (item.thumbnail_url) {
+          let simpleUrl = item.thumbnail_url.split('?')[0];
           html += '<div class="search-result-img">';
-            html += `<img src="${item.thumbnail_url}?width=176&amp;height=176&amp;fit=crop" alt="">`;
+            html += `<img src="${simpleUrl}?width=176&amp;height=176&amp;fit=crop" alt="">`;
             html += '</div>';
         }
 
