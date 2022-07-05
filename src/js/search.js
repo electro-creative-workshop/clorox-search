@@ -62,7 +62,7 @@ export function initCloroxSearch(settings) {
     SEARCH_CONFIG.AppID,
     SEARCH_CONFIG.searchKey
   );
-  console.log('client', client);
+  //console.log('client', client);
 
 
   const searchInput = document.getElementsByClassName('js-search-input')[0];
@@ -306,7 +306,7 @@ export function initCloroxSearch(settings) {
   });
 
   function switchTab(newTab) {
-    console.log('switch to ' + newTab);
+    //console.log('switch to ' + newTab);
     let activeTab = searchTabs.querySelector('.active');
     if (activeTab) {
       activeTab.classList.remove('active');
@@ -324,7 +324,7 @@ export function initCloroxSearch(settings) {
   resultsElement.addEventListener('click', e => {
     if (e.target.classList.contains('js-load-more')) {
       let data = e.target.dataset;
-      console.log('load more', data);
+      //console.log('load more', data);
       queryLoadMore(
         searchInput.value,
         data['section'],
@@ -393,8 +393,7 @@ export function initCloroxSearch(settings) {
 
     value = value
       .trim() // remove spaces
-      .substring(0, 512); // algolia max query string length
-
+      .substring(0, 500); // algolia max query string length is 511
 
     controller = new AbortController();
     signal = controller.signal;
@@ -456,7 +455,7 @@ export function initCloroxSearch(settings) {
     const index = client.initIndex(indexName);
     index.search(value, opts)
       .then(results => {
-          console.log(results);
+          //console.log(results);
           populateMoreResults(results, sectionName, indexName);
         })
       .catch(error => {
@@ -472,7 +471,7 @@ export function initCloroxSearch(settings) {
    * @param {Object} results
    */
   function populate(results) {
-    console.log('populate', results);
+    //console.log('populate', results);
     let html = '';
     let sectionCount = [];
 
@@ -573,11 +572,11 @@ export function initCloroxSearch(settings) {
   }
 
   function populateMoreResults(results, sectionName, indexName) {
-    console.log(`populateMoreResults ${sectionName}`);
+    //console.log(`populateMoreResults ${sectionName}`);
     const section = sections[sectionName];
 
     let type = section.indices[indexName].type;
-    console.log('type: ' + type);
+    //console.log('type: ' + type);
     let transformer = transformers.generic;
     if (transformers[type]) {
       transformer = transformers[type];

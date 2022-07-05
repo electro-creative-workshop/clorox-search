@@ -1,6 +1,6 @@
 {
   "name": "clorox-search",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Integrates algolia search into clorox.com site",
   "main": "dist/clorox-search.js",
   "repository": {
