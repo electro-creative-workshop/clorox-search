@@ -43,16 +43,16 @@ export function initCloroxSearch(settings) {
       search: 'Buscar',
       products: 'Productos',
       information: 'Información',
-      noResults:'No results (es)',
-      noResultsDetail: 'We tried as hard as we could but couldn\'t find any results (es)',
-      viewAllProducts: 'View all products (es)',
-      guides: 'Cleaning Guides (es)',
-      resources: 'Other Resources (es)',
+      noResults:'No hay resultados',
+      noResultsDetail: 'Buscamos por todos lados, pero no pudimos encontrar ningún resultado',
+      viewAllProducts: 'Ver todos los productos',
+      guides: 'Guías de limpieza',
+      resources: 'Otros Recursos',
       loadMore: {
-        products: 'Load more products (es)',
-        guides: 'Load more guides (es)',
+        products: 'Ver más productos',
+        guides: 'Ver más guías',
       },
-      faqsLoadMore: 'More Frequently Asked Questions (es)',
+      faqsLoadMore: 'Ver más preguntas frecuentes',
     };
   }
 
