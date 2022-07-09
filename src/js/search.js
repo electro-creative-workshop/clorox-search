@@ -5,7 +5,9 @@
  *   showCloroxSearch() - display overlay & allow searching
  */
 
-// search only iibrary
+/* global dataLayer */
+
+// search only library
 import algoliasearch from 'algoliasearch/lite';
 
 export function initCloroxSearch(settings) {
@@ -55,6 +57,9 @@ export function initCloroxSearch(settings) {
       faqsLoadMore: 'Ver más preguntas frecuentes',
     };
   }
+
+  // Current search query
+  let searchQuery;
 
   appendOverlay();
 
@@ -152,7 +157,7 @@ export function initCloroxSearch(settings) {
         }
 
         let html = '';
-        html += `<li><a href="${item.url}/" class="search__item">`;
+        html += `<li><a href="${item.url}/" class="search__item" data-result="product">`;
 
         if (item.thumbnail_url) {
           let simpleUrl = item.thumbnail_url.split('?')[0];
@@ -174,7 +179,7 @@ export function initCloroxSearch(settings) {
 
     guides: results => {
       return results.map(item => {
-        let html = `<li><a href="${item.url}" class="search__item">`;
+        let html = `<li><a href="${item.url}" class="search__item" data-result="guide">`;
 
         if (item.thumbnail_url) {
           html += '<div class="search-result-img">';
@@ -195,7 +200,7 @@ export function initCloroxSearch(settings) {
         html += `<span class="question ${active}">`;
         html +=   '<dt>';
         html +=     `<button class="resource-title" id="faq-${index}" aria-expanded="true" aria-controls="faq-panel-${index}">`;
-        html +=       `<p class="label-large-strong">${item.question}</p>`;
+        html +=       `<p class="label-large-strong" data-gtm-search-faq-heading>${item.question}</p>`;
         html +=       `<div><img src="${SEARCH_CONFIG.homeURL}/wp-content/themes/electro/img/search/chevron.svg" class="chevron" alt=""></div>`;
         html +=     `</button>`;
         html +=   '</dt>';
@@ -209,7 +214,7 @@ export function initCloroxSearch(settings) {
 
     links: results => {
       return results.map(item => {
-        let html = `<li><a href="${item.url}" class="label-large-strong">`;
+        let html = `<li><a href="${item.url}" class="label-large-strong" data-result="page">`;
         return html +  `${item.name}<img src="${SEARCH_CONFIG.homeURL}/wp-content/themes/electro/img/search/search-arrow.svg" class="arrow" alt="" /></a></li>`;
       });
     },
@@ -299,8 +304,22 @@ export function initCloroxSearch(settings) {
   // switch between results tabs
   searchTabs.querySelectorAll('.js-search-tab').forEach(elem => {
     elem.addEventListener('click', e => {
-      switchTab(e.currentTarget.dataset['section']);
+      const section = e.currentTarget.dataset['section'];
+
+      switchTab(section);
       e.preventDefault();
+
+      // Tab event
+      if (typeof dataLayer !== 'undefined') {
+        dataLayer.push({
+          event: 'globalSearchTab',
+          label: section,
+          context: {
+            query: searchQuery
+          }
+        });
+      }
+
       return false;
     });
   });
@@ -320,8 +339,8 @@ export function initCloroxSearch(settings) {
     query(searchInput.value.length > 2 ? searchInput.value : SEARCH_CONFIG.initSearch, 'tab');
   }
 
-  // load more button handling
   resultsElement.addEventListener('click', e => {
+    // Load more button handling
     if (e.target.classList.contains('js-load-more')) {
       let data = e.target.dataset;
       //console.log('load more', data);
@@ -331,7 +350,21 @@ export function initCloroxSearch(settings) {
         data['index'],
         data['page']);
     }
+
+    // Result click event
+    const result = e.target.closest('[data-result]');
+
+    if (result && typeof dataLayer !== 'undefined') {
+      dataLayer.push({
+        event: 'globalSearchSelect',
+        label: result.href,
+        context: {
+          query: searchQuery
+        }
+      });
+    }
   });
+
 
   /**
    * Process search entry
@@ -398,7 +431,8 @@ export function initCloroxSearch(settings) {
     controller = new AbortController();
     signal = controller.signal;
 
-    const queryString = value;
+    searchQuery = value;
+
     const queries = [];
     Object.keys(sections).forEach(sectionName => {
       const section = sections[sectionName];
@@ -412,7 +446,7 @@ export function initCloroxSearch(settings) {
         }
         queries.push({
           indexName: index,
-          query: queryString,
+          query: searchQuery,
           params: {
             hitsPerPage: perPage,
             attributesToRetrieve: section.indices[index].fields || indexDefault.fields,
@@ -426,6 +460,14 @@ export function initCloroxSearch(settings) {
     client.multipleQueries(queries)
       .then(({ results }) => {
         populate(results);
+
+        // Submit event
+        if (source === 'input' && typeof dataLayer !== 'undefined') {
+          dataLayer.push({
+            event: 'globalSearchQuery',
+            label: value
+          });
+        }
       })
       .catch(error => {
         if (error.name !== 'AbortError') {
@@ -662,6 +704,19 @@ export function initCloroxSearch(settings) {
     let titleElem = e.target.closest('.question');
     if (titleElem) {
       titleElem.classList.toggle("active");
+
+      // FAQ expand event
+      const heading = e.currentTarget.querySelectorAll('[data-gtm-search-faq-heading]');
+
+      if (heading.length && typeof dataLayer !== 'undefined') {
+        dataLayer.push({
+          event: 'globalSearchFaqExpand',
+          label: heading[0].innerText,
+          context: {
+            query: searchQuery
+          }
+        });
+      }
     }
   });
 
@@ -717,6 +772,13 @@ export function initCloroxSearch(settings) {
 
     // set focus
     searchInput.focus();
+
+    // Focus event
+    if (typeof dataLayer !== 'undefined') {
+      dataLayer.push({
+        event: 'globalSearchFocus'
+      });
+    }
   };
 } // initCloroxSearch
 
