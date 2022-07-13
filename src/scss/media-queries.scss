@@ -1,7 +1,3 @@
-//==============================================================================
-// Media Queries
-//==============================================================================
-
 // Sizes
 $mq-tablet-min:     calc(768/16) + 0em;  // 768px
 $mq-tablet-max:     calc(1024/16) + 0em;  // 1024px
@@ -11,8 +7,7 @@ $mq-desktop-max:    calc(1599/16) + 0em; // 1599px
 
 $mq-desktop-xl-min: calc(1600/16) + 0em; // 1600px
 
-
-// MEDIA QUERIES
+// Media queries
 $media-queries: true !default;
 $media-query-free-breakpoint: 900px;
 
