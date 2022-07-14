@@ -32,6 +32,3 @@ The goal with this code is to simplify the integration into the WordPress and Ma
         })
 
 4. call showCloroxSearch() - to invoke
-
-
-
