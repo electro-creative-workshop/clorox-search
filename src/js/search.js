@@ -221,7 +221,7 @@ export function initCloroxSearch(settings) {
             return results.map(item => {
                 let html = `<li class="search-links__item"><a href="${item.url}" class="search-label search-links__anchor" data-result="page">`;
 
-                return html + `${item.name}<img src="${SEARCH_CONFIG.homeURL}/wp-content/themes/electro/img/search/search-arrow.svg" class="search-links__arrow" alt="" width="24" height="24" aria-hidden="true"></a></li>`;
+                return html + `<span>${item.name}</span><img src="${SEARCH_CONFIG.homeURL}/wp-content/themes/electro/img/search/search-arrow.svg" class="search-links__arrow" alt="" width="24" height="24" aria-hidden="true"></a></li>`;
             });
         },
     };
@@ -257,7 +257,11 @@ export function initCloroxSearch(settings) {
 
         html += '<div class="search-controls">';
         html += '<div class="search-fields">';
-        html += `<input type="search" name="s" autoComplete="off" placeholder="${strings.search}" class="search-input js-search-input" style="background-image:url('${SEARCH_CONFIG.homeURL}/wp-content/themes/electro/img/search/search.svg');">`;
+        html += `<input type="search" name="s" autocomplete="off" placeholder="${strings.search}" class="search-input js-search-input">`;
+        html += `<svg width="24" height="24" class="search-icon">`;
+        html += `<path d="M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm-9 7a9 9 0 1 1 18 0 9 9 0 0 1-18 0Z" fill="#003DA5"/>`;
+        html += `<path d="M15.94 15.94a1 1 0 0 1 1.42 0l4.35 4.35a1 1 0 0 1-1.42 1.42l-4.35-4.35a1 1 0 0 1 0-1.42Z" fill="#003DA5"/>`;
+        html += `</svg>`;
         html += `<button class="search-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" d="M18.7 5.3c.4.4.4 1 0 1.4l-12 12a1 1 0 0 1-1.4-1.4l12-12a1 1 0 0 1 1.4 0Z" clip-rule="evenodd"/><path fill-rule="evenodd" d="M5.3 5.3a1 1 0 0 1 1.4 0l12 12a1 1 0 0 1-1.4 1.4l-12-12a1 1 0 0 1 0-1.4Z" clip-rule="evenodd"/></svg></button>`;
         html += '</div>';
 
