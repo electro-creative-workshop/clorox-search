@@ -158,7 +158,7 @@ export function initCloroxSearch(settings) {
 
                 let html = '';
 
-                html += `<li><a href="${item.url}/" class="search-grid__anchor" data-result="product">`;
+                html += `<li><a href="${item.url}" class="search-grid__anchor" data-result="product">`;
 
                 if (item.thumbnail_url) {
                     let simpleUrl = item.thumbnail_url.split('?')[0];
