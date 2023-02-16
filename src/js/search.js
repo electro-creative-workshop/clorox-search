@@ -145,7 +145,7 @@ export function initCloroxSearch(settings) {
      * Transform search results
      */
     const transformers = {
-        products: (results, queryID) => {
+        products: (results, queryID, page, hitsPerPage) => {
             return results.map((item, index) => {
                 let brand = false;
                 let title = item.name;
@@ -160,6 +160,9 @@ export function initCloroxSearch(settings) {
 
                 // add queryID & position to product url
                 let position = index + 1;
+                if (page) {
+                    position = position + page * hitsPerPage;
+                }
                 html += `<li><a href="${item.url}?queryID=${queryID}&position=${position}" class="search-grid__anchor" data-result="product">`;
 
                 if (item.thumbnail_url) {
@@ -515,6 +518,7 @@ export function initCloroxSearch(settings) {
             attributesToRetrieve: section.indices[indexName].fields || indexDefault.fields,
             filters: !sections['products'].indices[indexName] ? `language:${SEARCH_CONFIG.language}` : '',
             page: page,
+            clickAnalytics: true,
         };
         const index = client.initIndex(indexName);
         index.search(value, opts)
@@ -664,7 +668,7 @@ export function initCloroxSearch(settings) {
         if (transformers[type]) {
             transformer = transformers[type];
         }
-        let html = transformer(results.hits).join('');
+        let html = transformer(results.hits, results.queryID, results.page, results.hitsPerPage).join('');
 
         // append items to ul
         const sectionResults = resultsElement.getElementsByClassName(`js-results-${indexName}`)[0];
