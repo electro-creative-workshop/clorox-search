@@ -96,7 +96,7 @@ export function initCloroxSearch(settings) {
     };
 
     let productIndex = SEARCH_CONFIG.shopProductIndex;
-    if (SEARCH_CONFIG.language === 'es') {
+    if (SEARCH_CONFIG.language === 'es' && !productIndex) {
         productIndex = 'wp_posts_product';
     }
 
