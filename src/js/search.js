@@ -96,8 +96,10 @@ export function initCloroxSearch(settings) {
     };
 
     let productIndex = SEARCH_CONFIG.shopProductIndex;
+    let productIndexLanguageFilter = '';
     if (SEARCH_CONFIG.language === 'es' && !productIndex) {
         productIndex = 'wp_posts_product';
+        productIndexLanguageFilter = 'language:es';
     }
 
     // tab sections & related content
@@ -474,7 +476,7 @@ export function initCloroxSearch(settings) {
                         hitsPerPage: perPage,
                         attributesToRetrieve: section.indices[index].fields || indexDefault.fields,
                         // English product index does not support language filtering
-                        filters: (sectionName === 'products' && SEARCH_CONFIG.language === 'en') ? '' : `language:${SEARCH_CONFIG.language}`,
+                        filters: sectionName === 'products' ? productIndexLanguageFilter : `language:${SEARCH_CONFIG.language}`,
                     },
                 });
             });
@@ -516,7 +518,7 @@ export function initCloroxSearch(settings) {
         let opts = {
             hitsPerPage: perPage,
             attributesToRetrieve: section.indices[indexName].fields || indexDefault.fields,
-            filters: !sections['products'].indices[indexName] ? `language:${SEARCH_CONFIG.language}` : '',
+            filters: sectionName === 'products' ? productIndexLanguageFilter : `language:${SEARCH_CONFIG.language}`,
             page: page,
             clickAnalytics: true,
         };
